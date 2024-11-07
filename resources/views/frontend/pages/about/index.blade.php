@@ -15,10 +15,9 @@
             overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall
             value proposition.</p>
         <div class="social-icons">
-            <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
+            @foreach ($data['items'] as $key => $val)
+                <a class="social-icon" href="{{$val['link']}}"><i class="{{$val['icon']}}"></i></a>
+            @endforeach
         </div>
     </div>
 </section>

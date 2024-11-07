@@ -12,7 +12,17 @@ class GeneralController extends Controller
 
         $data = [
             'nama' => 'Test',
-            'phone_number' => '0812121212'
+            'phone_number' => '0812121212',
+            'items' => [
+                [
+                    'icon' => 'fab fa-linkedin-in',
+                    'link' => 'google.com'
+                ],
+                [
+                    'icon' => 'fab fa-facebook',
+                    'link' => 'google.com'
+                ]
+            ]
         ];
 
         return view('frontend.pages.about.index', [
