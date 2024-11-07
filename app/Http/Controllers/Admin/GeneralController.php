@@ -9,8 +9,15 @@ class GeneralController extends Controller
 {
     function about() {
         $title = 'Tentang saya';
+
+        $data = [
+            'nama' => 'Test',
+            'phone_number' => '0812121212'
+        ];
+
         return view('frontend.pages.about.index', [
-            'title_page' => $title
+            'title_page' => $title,
+            'data' => $data
         ]);
     }
     function experience()
