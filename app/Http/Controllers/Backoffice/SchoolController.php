@@ -11,9 +11,14 @@ class SchoolController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $data = School::all();
+
+        if($request->keyword != null){
+            $data = School::where('name', 'like', '%' . $request->keyword . '%')->get();
+        }
+
         return view('backoffice.pages.school.index', [
             'page_title' => 'School',
             'data' => $data
@@ -82,6 +87,24 @@ class SchoolController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            School::whereId($id)->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Delete Successfully !',
+            ], 200);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error Found :'. $th->getMessage(),
+            ], 500);
+        } catch (\Exception $th) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error Found :' . $th->getMessage(),
+            ], 500);
+        }
     }
 }
